@@ -8,6 +8,7 @@ Explicação da abordagem para resolução do TPC1.
 * Número: pg53834
 
 **Problema**
+
 Com o auxílio das bibliotecas de Python *jjcli* e *colections*, elaborar um programa que apresenta o número de ocurrências de cada palavra num texto.
 
 **Solução**
@@ -22,7 +23,7 @@ Com o auxílio das bibliotecas de Python *jjcli* e *colections*, elaborar um pro
 
 O programa executa através da invocação do seguinte comando:
     
-    *pyton3 word_freq.py [opção] ficheiro_input*
+    pyton3 word_freq.py [opção] ficheiro_input
 
 
 Nota: Neste caso, o texto escolhido e fornecido pela equipa docente foi *Amor de Perdição* de Camilo Castelo Branco, porém, o programa funciona para qualquer texto.

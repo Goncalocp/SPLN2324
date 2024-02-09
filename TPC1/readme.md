@@ -12,7 +12,7 @@ Explicação da abordagem para resolução do TPC1.
 Com o auxílio das bibliotecas de Python *jjcli* e *colections*, elaborar um programa que apresenta o número de ocurrências de cada palavra num texto.
 
 **Solução**
-* Criação da função *tokenizer* utiliza uma expressão regular para captar as diferentes palavras.
+* Criação da função *tokenizer* que utiliza uma expressão regular para captar as diferentes palavras/símbolos.
 * Criação da função *my_print* que imprime o as palavras e o respetivo número de ocorrências, uma por linha. A função usa também duas variáveis, uma para o comprimento da maior palavra no texto e outra para o comprimento do número de ocorrências mais alto, de forma a ajustar a largura das colunas impressas, resultando numa melhor legibilidade. 
 * O tipo de informação impressa varia consoante as opções selecionadas no input, sendo estas as seguintes:
     * -m x : Mostra as x palavras mais comuns

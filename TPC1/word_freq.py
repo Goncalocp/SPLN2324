@@ -25,39 +25,6 @@ def tokenizer(text):
    return tokens
 
 
-def my_print(content,flag):
-    if flag==1:
-        content = sorted(content, key=lambda x: x[0])
-    if flag==2:
-        content = sorted(content, key=lambda x: x[1])
-    if flag==3:
-        content = sorted(content, key=lambda x: x[1], reverse=True)
-    
-    max_word_length = max(len(word) for word, _ in content)
-    max_occurrence_length = max(len(str(occurrence)) for _, occurrence in content)
-    
-    for word, occurrence in content:
-        if flag == 4:
-            print(f'{word:<{max_word_length}}  {occurrence:>{max_occurrence_length}}')
-        else:
-            print(f'{occurrence:>{max_occurrence_length}}    {word:<{max_word_length}}')
-
-
-for txt in cl.text():
-    word_list = tokenizer(txt) 
-    ocorr = Counter(word_list)
-    if "-m" in cl.opt:
-        my_print(ocorr.most_common(int(cl.opt.get("-m"))),0)
-    elif "-n" in cl.opt:
-        my_print(ocorr.items(),1)
-    elif "-o" in cl.opt:
-        my_print(ocorr.items(),2)
-    elif "-p" in cl.opt:
-        my_print(ocorr.items(),3)
-    elif "-q" in cl.opt:
-        my_print(ocorr.items(),4)
-
-
 def my_print(content,option):
     if option=="-n":
         content = sorted(content, key=lambda x: x[0])

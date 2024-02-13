@@ -11,13 +11,14 @@ SYNOPSIS
         -o : Number of occurrences (ascending)
         -p : Number of occurrences (descending)
         -q : Swap word and number position
+        -r s : Number of occurrences of words with the substring s
 Description'''
 
 from jjcli import *
 from collections import Counter
 import re
 
-cl = clfilter("qponm:",doc= __doc__)
+cl = clfilter("r:qponm:",doc= __doc__)
 
 
 def tokenizer(text):
@@ -25,14 +26,17 @@ def tokenizer(text):
    return tokens
 
 
-def my_print(content,option):
+def my_print(content,option,substring=""):
     if option=="-n":
         content = sorted(content, key=lambda x: x[0])
-    if option=="-o":
+    elif option=="-o":
         content = sorted(content, key=lambda x: x[1])
-    if option=="-p":
+    elif option=="-p":
         content = sorted(content, key=lambda x: x[1], reverse=True)
-    
+    elif option=="-r":
+        content = [(word, occurrence) for word, occurrence in content if substring in word]
+        content = sorted(content, key=lambda x: x[1], reverse=True)
+
     max_word_length = max(len(word) for word, _ in content)
     max_occurrence_length = max(len(str(occurrence)) for _, occurrence in content)
     
@@ -48,6 +52,9 @@ for txt in cl.text():
     ocorr = Counter(word_list)
     if "-m" in cl.opt:
         my_print(ocorr.most_common(int(cl.opt.get("-m"))),"")
+    elif "-r" in cl.opt:
+        option = "-r"
+        my_print(ocorr.items(),option,cl.opt.get("-r"))
     else:
         if "-n" in cl.opt:
             option = "-n"
@@ -57,5 +64,4 @@ for txt in cl.text():
             option = "-p"
         elif "-q" in cl.opt:
             option = "-q"
-        
         my_print(ocorr.items(),option)

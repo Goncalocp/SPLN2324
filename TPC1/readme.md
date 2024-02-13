@@ -20,7 +20,8 @@ Com o auxílio das bibliotecas de Python *jjcli* e *colections*, elaborar um pro
     * -o : Ordenado pelo número de ocorrências (ascendente)
     * -p : Ordenado pelo número de ocorrências (descendente)
     * -q : Palavra primeiro e só depois o seu número de ocorrências
-
+    * -r s : Número de ocorrências das palavras que contêm a substring s
+    
 O programa executa através da invocação do seguinte comando:
     
     pyton3 word_freq.py [opção] ficheiro_input

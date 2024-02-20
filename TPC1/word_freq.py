@@ -5,6 +5,8 @@ NAME
 
 SYNOPSIS
     word_freq [options] input_files
+
+DESCRIPTION
     options: 
         -m 20 : Show 20 most common
         -n : Alphabetical order
@@ -12,7 +14,7 @@ SYNOPSIS
         -p : Number of occurrences (descending)
         -q : Swap word and number position
         -r s : Number of occurrences of words with the substring s
-Description'''
+'''
 
 from jjcli import *
 from collections import Counter

@@ -21,6 +21,7 @@ Com o auxílio das bibliotecas de Python *jjcli* e *colections*, elaborar um pro
     * -p : Ordenado pelo número de ocorrências (descendente)
     * -q : Palavra primeiro e só depois o seu número de ocorrências
     * -r s : Número de ocorrências das palavras que contêm a substring s
+    * -s : Ignore case
     
 O programa executa através da invocação do seguinte comando:
     

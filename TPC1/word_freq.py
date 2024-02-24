@@ -7,20 +7,28 @@ SYNOPSIS
     word_freq [options] input_files
 
 DESCRIPTION
+
     options: 
         -m 20 : Show 20 most common
+        
         -n : Alphabetical order
+
         -o : Number of occurrences (ascending)
+        
         -p : Number of occurrences (descending)
+        
         -q : Swap word and number position
+        
         -r s : Number of occurrences of words with the substring s
+        
+        -s : Ignore case
 '''
 
 from jjcli import *
 from collections import Counter
 import re
 
-cl = clfilter("r:qponm:",doc= __doc__)
+cl = clfilter("sr:qponm:",doc= __doc__)
 
 
 def tokenizer(text):
@@ -28,7 +36,23 @@ def tokenizer(text):
    return tokens
 
 
+def merge_words(content):
+    result_dict = {}
+    
+    for word, occurrences in content:
+        word_lower = word.lower()
+        if word_lower in result_dict:
+            result_dict[word_lower]['occurrences'] += occurrences
+        else:
+            result_dict[word_lower] = {'word': word, 'occurrences': occurrences}
+    
+    result_list = [(word_info['word'], word_info['occurrences']) for word_info in result_dict.values()]
+    
+    return result_list
+
+
 def my_print(content,option,substring=""):
+    
     if option=="-n":
         content = sorted(content, key=lambda x: x[0])
     elif option=="-o":
@@ -38,7 +62,10 @@ def my_print(content,option,substring=""):
     elif option=="-r":
         content = [(word, occurrence) for word, occurrence in content if substring in word]
         content = sorted(content, key=lambda x: x[1], reverse=True)
-
+    elif option=="-s":
+        content = merge_words(content)
+        content = sorted(content, key=lambda x: x[0])
+        
     max_word_length = max(len(word) for word, _ in content)
     max_occurrence_length = max(len(str(occurrence)) for _, occurrence in content)
     
@@ -50,20 +77,14 @@ def my_print(content,option,substring=""):
 
 
 for txt in cl.text():
+    
     word_list = tokenizer(txt) 
     ocorr = Counter(word_list)
-    if "-m" in cl.opt:
+    option = next(iter(cl.opt.keys()), None)
+    
+    if option == "-m":
         my_print(ocorr.most_common(int(cl.opt.get("-m"))),"")
-    elif "-r" in cl.opt:
-        option = "-r"
+    elif option == "-r":
         my_print(ocorr.items(),option,cl.opt.get("-r"))
     else:
-        if "-n" in cl.opt:
-            option = "-n"
-        elif "-o" in cl.opt:
-            option = "-o"
-        elif "-p" in cl.opt:
-            option = "-p"
-        elif "-q" in cl.opt:
-            option = "-q"
         my_print(ocorr.items(),option)

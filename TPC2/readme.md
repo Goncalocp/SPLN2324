@@ -15,6 +15,7 @@ Estrutar a informação resultante do programa *word_freq* do TPC1 numa tabela d
 * Criação da função *import_db* para carregar o ficheiro da base de dados. Esse ficheiro encontra-se na diretoria *tests* e corresponde à tabela de ocorrências das palavras da língua portuguesa.
 * Criação da função *compare* que para cada palavra presente no texto em questão (neste caso, uma vez mais, *Amor de Perdição* de Camilo Castelo Branco) calcula a sua frequência relativa no mesmo, e na base de dados. O valor final apresentado é a divisão destes dois valores. No caso da palavra não se encontra na base de dados, considera-se que tem 1 ocorrência.
 * Sendo este uma continuação do código do TPC1, as opções que o programa oferece são as mesmas, tendo sido adicionada apenas a opção -t que mostra o resultado da freqência referida acima, para cada palavra do texto.
+* Quando executado o programa com esta opção, são retiradas as palavras não relevantes. Neste caso, são consideradas palavras não relevantes os números, palavras com números e símbolos(ponto, virgula, ponto e virgula, etc). Porém, a definição de relevante varia consoante o tema do texto.
 
 O programa executa através da invocação do seguinte comando:
     

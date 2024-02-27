@@ -22,6 +22,8 @@ DESCRIPTION
         -r s : Number of occurrences of words with the substring s
         
         -s : Ignore case
+
+        -t : Compare frequencies with reference table
 '''
 
 from jjcli import *
@@ -31,9 +33,12 @@ import re
 __version__ = "0.0.1"
 
 
-def tokenizer(text):
-   tokens = re.findall(r'\w+(?:\-\w+)?|[,;.:_?!—]+',text)
-   return tokens
+def tokenizer(text,flag):
+    if flag:
+        tokens = re.findall(r'[A-Za-z]+(?:\-[A-Za-z]+)?|[_—]+',text)
+    else:
+        tokens = re.findall(r'\w+(?:\-\w+)?|[,;.:_?!—]+',text)
+    return tokens
 
 
 def merge_words(content):
@@ -122,7 +127,7 @@ def my_print(content,option,substring=""):
 def main():
     cl = clfilter("tsr:qponm:",doc= __doc__)
     for txt in cl.text():
-        word_list = tokenizer(txt) 
+        word_list = tokenizer(txt, "-t" in cl.opt) 
         ocorr = Counter(word_list)
         option = next(iter(cl.opt.keys()), None)
 

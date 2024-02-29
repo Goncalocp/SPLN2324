@@ -1,4 +1,4 @@
-import jinja2, os, sys
+import jinja2, os, sys, json
 from glob import glob
 
 
@@ -11,11 +11,11 @@ else:
     name = input("Módulo? ")
 
 
-metadata_path = str(os.path.expanduser("~")) + "/metadata.txt"
-metadata_file = open(metadata_path,"r")
-lines = metadata_file.readlines()
-autor = lines[0][:-1]
-email = lines[1][:-1]
+metadata_path = str(os.path.expanduser("~")) + "/metadata.json"
+metadata_file = open(metadata_path)
+metadata = json.load(metadata_file)
+autor = metadata["autor"]
+email = metadata["email"]
 
 
 num = int(input('Nº de dependências: '))

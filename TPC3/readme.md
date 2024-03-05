@@ -14,6 +14,7 @@ Programa para automatização da criação dos ficheiros *toml*.
 **Solução**
 * Através do módulo *glob* obtém-se aquele que será o campo "nome" no ficheiro final.
 * Os campos "autor" e "email" encontram-se num ficheiro (*metadata.json*) localizado na *home* do dispositivo.
+* Se a diretoria tiver um ficheiro .py, o nome do projeto é o mesmo nome do ficheiro. Caso contrário é passado pelo utilizador via input.
 * Por último, é utilziado o terminal para se obter as dependências que serão utilizadas. Para isso, o programa pede ao utlizador o número de dependências que vai ter e, de seguida, os seus nomes, um a um.
 * É utilizado também o módulo *jinja* e, através do seu método *Template* é feita a intrepolação das variáveis na string final. Para isto, Usa-se também o método *render*, do mesmo módulo.
 * O redirecionamento da string final para o ficheiro é feito passando o nome do ficheiro pretendido como argumento no terminal.

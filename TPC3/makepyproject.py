@@ -1,3 +1,17 @@
+#!/usr/bin/env python3
+'''
+NAME
+    makepyproject - Template generator
+
+SYNOPSIS
+    makepyproject [module] output_file
+    
+DESCRIPTION
+    If a .py file exists within the directory, the project will be named after the file. Otherwise, the name will be provided via user input (module).
+
+    The dependencies are also provided via user input, whereby the user first specifies the total count of dependencies followed by individually listing each dependency in succession
+'''
+
 import jinja2, os, sys, json
 from glob import glob
 
@@ -34,6 +48,7 @@ name ="{{name}}"
 authors = [
     {name = "{{autor}}", email = "{{email}}"},
 ]
+version = "0.0.1"
 classifiers = [
     "License :: OSI Approved :: MIT License",
 ]

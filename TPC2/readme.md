@@ -1,4 +1,3 @@
-
 **Introdução**
 
 Explicação da abordagem para resolução do TPC2.

@@ -11,7 +11,7 @@ Explicação da abordagem para resolução do TPC4.
 O objetivo do trabalho proposto é encontrar módulos em Python relacionados com a tarefa de Sentiment Analysis.
 
 **Solução**
-Para resolução do problema , efetuou-se uma vasta pesquisa, tendo-se encontrado o seguinte:
+Para resolução do problema, efetuou-se uma vasta pesquisa, tendo-se encontrado o seguinte:
 
     * TextBlob
     * Vader
